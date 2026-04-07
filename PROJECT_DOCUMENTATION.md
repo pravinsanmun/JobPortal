@@ -746,3 +746,317 @@ The primary objectives of the JobHook project are:
    - Applicant profiles
    - Status update buttons
    - Filter by status
+
+8. **Notifications Panel:**
+   - Notification list
+   - Read/Unread indicators
+   - Delete options
+   - Timestamp display
+
+### 9.6 Future Enhancements
+
+**Planned Features:**
+1. AI-powered job recommendations based on profile
+2. Video interview scheduling and integration
+3. Resume parser and builder
+4. Advanced analytics dashboard for employers
+5. Mobile applications (iOS and Android)
+6. Social media integration for profile import
+7. Salary comparison and negotiation tools
+8. Company reviews and ratings
+9. Skill assessment tests
+10. Chat system between recruiters and candidates
+11. Calendar integration for interview scheduling
+12. Multi-language support
+13. Premium subscription features
+14. Job alerts via email/SMS
+15. Integration with LinkedIn and other job boards
+
+### 9.7 Challenges Faced and Solutions
+
+**Challenge 1: JWT Token Management**
+- **Problem:** Token expiration handling and refresh mechanism
+- **Solution:** Implemented token validation on each request and automatic logout on expiration
+
+**Challenge 2: File Upload (Profile Pictures)**
+- **Problem:** Storing and retrieving binary data in MongoDB
+- **Solution:** Used Base64 encoding for storage and decoding for display
+
+**Challenge 3: Real-time Notifications**
+- **Problem:** Keeping notifications synchronized
+- **Solution:** Implemented polling mechanism and state management with Redux
+
+**Challenge 4: Complex State Management**
+- **Problem:** Managing user, job, and application states across components
+- **Solution:** Used Redux Toolkit with slices for organized state management
+
+**Challenge 5: Responsive Design**
+- **Problem:** Ensuring consistent UI across different screen sizes
+- **Solution:** Used Tailwind CSS utility classes and Mantine's responsive props
+
+**Challenge 6: Email Service Configuration**
+- **Problem:** Gmail SMTP authentication and security
+- **Solution:** Used app-specific passwords and proper SMTP configuration
+
+---
+
+## 10. Conclusion
+
+JobHook successfully demonstrates a modern, full-stack job portal application built with industry-standard technologies. 
+The project showcases the team's ability to:
+
+- Design and implement complex web applications
+- Work with modern frameworks and libraries
+- Implement secure authentication and authorization
+- Create responsive and user-friendly interfaces
+- Integrate multiple technologies into a cohesive system
+- Follow software engineering best practices
+- Collaborate effectively as a team
+
+The application provides real value to both job seekers and employers by streamlining the recruitment process, 
+offering comprehensive profile management, and ensuring secure data handling. The modular architecture and clean 
+code structure make it easy to maintain and extend with new features.
+
+**Key Takeaways:**
+- Full-stack development requires careful planning and coordination between frontend and backend
+- Security should be a priority from the beginning, not an afterthought
+- User experience is crucial for application adoption
+- Modern tools and frameworks significantly accelerate development
+- Proper state management is essential for complex applications
+- Testing and validation prevent bugs and improve code quality
+
+---
+
+## 11. Team Contributions
+
+**Pravin Mundhe:**
+- Backend architecture design
+- Spring Security and JWT implementation
+- MongoDB schema design
+- API development and testing
+
+**Yash Patil:**
+- Frontend architecture and routing
+- Redux state management
+- Component development
+- API integration
+
+**Tanmay Rahane:**
+- Backend service layer implementation
+- Email service integration
+- Database operations
+- Error handling and validation
+
+**Piyush Shelke:**
+- UI/UX design and implementation
+- Responsive design
+- Animation and styling
+- Form components and validation
+
+---
+
+## 12. References and Resources
+
+**Documentation:**
+- Spring Boot Documentation: https://spring.io/projects/spring-boot
+- React Documentation: https://react.dev/
+- MongoDB Documentation: https://docs.mongodb.com/
+- Mantine UI Documentation: https://mantine.dev/
+- JWT Documentation: https://jwt.io/
+
+**Libraries and Frameworks:**
+- Redux Toolkit: https://redux-toolkit.js.org/
+- Tailwind CSS: https://tailwindcss.com/
+- Axios: https://axios-http.com/
+- React Router: https://reactrouter.com/
+
+**Tools:**
+- Maven: https://maven.apache.org/
+- npm: https://www.npmjs.com/
+- Git: https://git-scm.com/
+
+---
+
+## 13. Appendix
+
+### A. Installation Instructions
+
+**Prerequisites:**
+- Java 17 or higher
+- Node.js 16 or higher
+- MongoDB 7.x
+- Maven 3.9+ (or use included wrapper)
+
+**Backend Setup:**
+```bash
+cd backend
+./mvnw clean install -DskipTests
+./mvnw spring-boot:run
+```
+
+**Frontend Setup:**
+```bash
+cd frontend
+npm install
+npm start
+```
+
+**Database Setup:**
+- Install MongoDB
+- Start MongoDB service
+- Database will be created automatically on first run
+
+### B. Environment Variables
+
+**Backend (application.properties):**
+```properties
+spring.data.mongodb.uri=mongodb://localhost:27017/jobportal
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your-email@gmail.com
+spring.mail.password=your-app-password
+```
+
+**Frontend:**
+- API base URL configured in Axios instance
+- Default: http://localhost:8080
+
+### C. API Testing with Postman
+
+**Sample Requests:**
+
+1. **Register User:**
+```
+POST http://localhost:8080/api/auth/signup
+Body: {
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "accountType": "APPLICANT"
+}
+```
+
+2. **Login:**
+```
+POST http://localhost:8080/api/auth/login
+Body: {
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+3. **Get Jobs:**
+```
+GET http://localhost:8080/api/jobs
+Headers: Authorization: Bearer <jwt-token>
+```
+
+### D. Project Structure
+
+**Backend Structure:**
+```
+backend/
+├── src/
+│   ├── main/
+│   │   ├── java/com/jobportal/
+│   │   │   ├── api/              # REST Controllers
+│   │   │   ├── dto/              # Data Transfer Objects
+│   │   │   ├── entity/           # Database Entities
+│   │   │   ├── exception/        # Custom Exceptions
+│   │   │   ├── jwt/              # JWT Configuration
+│   │   │   ├── repository/       # Database Repositories
+│   │   │   ├── service/          # Business Logic
+│   │   │   ├── utility/          # Helper Classes
+│   │   │   ├── MyConfig.java     # CORS Configuration
+│   │   │   └── SecurityConfig.java # Security Configuration
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/                     # Test Files
+├── pom.xml                       # Maven Configuration
+└── Dockerfile                    # Docker Configuration
+```
+
+**Frontend Structure:**
+```
+frontend/
+├── public/                       # Static Assets
+├── src/
+│   ├── Components/               # React Components
+│   │   ├── ApplyJob/
+│   │   ├── CompanyProfile/
+│   │   ├── FindJobs/
+│   │   ├── FindTalent/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── JobDesc/
+│   │   ├── JobHistory/
+│   │   ├── LandingPage/
+│   │   ├── PostedJob/
+│   │   ├── PostJob/
+│   │   ├── Profile/
+│   │   ├── SignUpLogin/
+│   │   └── TalentProfile/
+│   ├── Data/                     # Static Data
+│   ├── Pages/                    # Page Components
+│   ├── Services/                 # API Services
+│   ├── Slices/                   # Redux Slices
+│   ├── Store.tsx                 # Redux Store
+│   ├── App.tsx                   # Main App Component
+│   └── index.tsx                 # Entry Point
+├── package.json                  # npm Configuration
+├── tailwind.config.js            # Tailwind Configuration
+└── tsconfig.json                 # TypeScript Configuration
+```
+
+### E. Troubleshooting
+
+**Common Issues:**
+
+1. **MongoDB Connection Error:**
+   - Ensure MongoDB service is running
+   - Check connection string in application.properties
+   - Verify port 27017 is not blocked
+
+2. **CORS Error:**
+   - Check CORS configuration in MyConfig.java
+   - Ensure frontend URL is in allowed origins
+   - Verify credentials support is enabled
+
+3. **JWT Token Issues:**
+   - Check token expiration time
+   - Verify token is included in Authorization header
+   - Ensure secret key is properly configured
+
+4. **Email Service Not Working:**
+   - Use app-specific password for Gmail
+   - Enable "Less secure app access" or use OAuth2
+   - Check SMTP settings
+
+5. **Build Failures:**
+   - Clear Maven cache: `mvn clean`
+   - Delete node_modules and reinstall: `rm -rf node_modules && npm install`
+   - Check Java and Node versions
+
+---
+
+## 14. Contact Information
+
+**Project Team:**
+- Pravin Mundhe - Backend Developer
+- Yash Patil - Frontend Developer
+- Tanmay Rahane - Backend Developer
+- Piyush Shelke - Frontend Developer
+
+**Project Repository:** [GitHub Link]
+**Project Demo:** [Demo Link]
+**Documentation:** This document
+
+---
+
+**Document Version:** 1.0  
+**Last Updated:** April 6, 2026  
+**Status:** Production Ready
+
+---
+
+© 2026 JobHook. All Rights Reserved.
